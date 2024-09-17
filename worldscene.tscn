@@ -1,0 +1,29 @@
+[gd_scene load_steps=4 format=3 uid="uid://caonxoddh865b"]
+
+[ext_resource type="PackedScene" uid="uid://ct2tlu1m0qowt" path="res://Playercharacterscene.tscn" id="1_06edm"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_qwk02"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_m8k22"]
+size = Vector2(636, 20)
+
+[node name="Node2D" type="Node2D"]
+position = Vector2(210, 318)
+
+[node name="CharacterBody2D" parent="." instance=ExtResource("1_06edm")]
+position = Vector2(289, -89)
+
+[node name="floor" type="StaticBody2D" parent="."]
+disable_mode = 1
+physics_material_override = SubResource("PhysicsMaterial_qwk02")
+metadata/_edit_group_ = true
+
+[node name="ColorRect" type="ColorRect" parent="floor"]
+offset_left = 308.0
+offset_right = 348.0
+offset_bottom = 40.0
+scale = Vector2(0.928111, 2.6028)
+
+[node name="floorcollision" type="CollisionShape2D" parent="floor"]
+position = Vector2(308, 0)
+shape = SubResource("RectangleShape2D_m8k22")
