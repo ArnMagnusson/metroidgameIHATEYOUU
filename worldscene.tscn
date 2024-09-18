@@ -1,7 +1,20 @@
-[gd_scene load_steps=5 format=4 uid="uid://caonxoddh865b"]
+[gd_scene load_steps=8 format=4 uid="uid://caonxoddh865b"]
 
 [ext_resource type="PackedScene" uid="uid://ct2tlu1m0qowt" path="res://Playercharacterscene.tscn" id="1_06edm"]
-[ext_resource type="Texture2D" uid="uid://bgx572bliigyt" path="res://grass1.png" id="2_ygjua"]
+[ext_resource type="Texture2D" uid="uid://bq75yv6r4hvt8" path="res://metroidvania textures/water tiles/acid.png" id="2_45ln5"]
+[ext_resource type="Texture2D" uid="uid://6qqj2137oxrm" path="res://grass1.png" id="2_ygjua"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_0bxrr"]
+resource_name = "Acid"
+texture = ExtResource("2_45ln5")
+0:0/animation_columns = 2
+0:0/animation_frame_0/duration = 1.0
+0:0/animation_frame_1/duration = 1.0
+0:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_q2loh"]
+physics_layer_0/collision_layer = 1
+sources/0 = SubResource("TileSetAtlasSource_0bxrr")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ccdqd"]
 texture = ExtResource("2_ygjua")
@@ -18,6 +31,12 @@ position = Vector2(210, 318)
 [node name="CharacterBody2D" parent="." instance=ExtResource("1_06edm")]
 position = Vector2(289, -89)
 
-[node name="TileMapLayer" type="TileMapLayer" parent="."]
+[node name="Tileholder" type="Node2D" parent="."]
+
+[node name="acid" type="TileMapLayer" parent="Tileholder"]
+tile_map_data = PackedByteArray("AAAaAP//AAAAAAAAAAAaAP7/AAAAAAAAAAAbAP7/AAAAAAAAAAAcAP7/AAAAAAAAAAAdAP7/AAAAAAAAAAA=")
+tile_set = SubResource("TileSet_q2loh")
+
+[node name="grass" type="TileMapLayer" parent="Tileholder"]
 tile_map_data = PackedByteArray("AAAAAP//AAAAAAAAAAABAP//AAAAAAAAAAACAP//AAAAAAAAAAADAP//AAAAAAAAAAAEAP//AAAAAAAAAAAFAP//AAAAAAAAAAAGAP//AAAAAAAAAAAHAP//AAAAAAAAAAAIAP//AAAAAAAAAAAJAP//AAAAAAAAAAAKAP//AAAAAAAAAAALAP//AAAAAAAAAAAMAP//AAAAAAAAAAANAP//AAAAAAAAAAATAP//AAAAAAAAAAASAP//AAAAAAAAAAARAP//AAAAAAAAAAAQAP//AAAAAAAAAAAPAP//AAAAAAAAAAAOAP//AAAAAAAAAAAUAP//AAAAAAAAAAAVAP//AAAAAAAAAAAWAP//AAAAAAAAAAAXAP//AAAAAAAAAAAYAP//AAAAAAAAAAAZAP//AAAAAAAAAAAaAP//AAAAAAAAAAAbAP//AAAAAAAAAAAcAP//AAAAAAAAAAAdAP//AAAAAAAAAAAeAP//AAAAAAAAAAAfAP//AAAAAAAAAAAgAP//AAAAAAAAAAAhAP//AAAAAAAAAAAiAP//AAAAAAAAAAAjAP//AAAAAAAAAAAkAP//AAAAAAAAAAAlAP//AAAAAAAAAAAmAP//AAAAAAAAAAAnAP//AAAAAAAAAAAAAP7/AAAAAAAAAAAAAP3/AAAAAAAAAAAAAPz/AAAAAAAAAAAAAPv/AAAAAAAAAAAAAPr/AAAAAAAAAAAnAP7/AAAAAAAAAAAnAP3/AAAAAAAAAAAnAPr/AAAAAAAAAAAnAPv/AAAAAAAAAAAnAPz/AAAAAAAAAAAXAP7/AAAAAAAAAAAXAP3/AAAAAAAAAAAVAPz/AAAAAAAAAAAQAP3/AAAAAAAAAAANAP7/AAAAAAAAAAALAP3/AAAAAAAAAAA=")
 tile_set = SubResource("TileSet_i474a")
