@@ -11,6 +11,14 @@ animations = [{
 "frames": [{
 "duration": 1.0,
 "texture": ExtResource("2_6hey6")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_6hey6")
 }, {
 "duration": 1.0,
 "texture": ExtResource("3_hgk22")
@@ -23,7 +31,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"Walk",
-"speed": 3.0
+"speed": 4.0
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_16qkm"]
