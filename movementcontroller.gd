@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
-const SPEED = 300.0
-const JUMP_VELOCITY = -400.0
+const SPEED = 100.0
+const JUMP_VELOCITY = -300.0
 
 func _physics_process(delta):
 	# Add the gravity. is on floor detects if its a flat surface on the button.
@@ -13,7 +13,8 @@ func _physics_process(delta):
 		velocity.y = JUMP_VELOCITY
 	# if in air and releases space, set velocity to 0
 	if Input.is_action_just_released("ui_accept"):
-		velocity.y = 0
+		if velocity.y < -50:
+			velocity.y = -50
 
 	# Get the input direction and handle the movement/deceleration.
 	var direction = Input.get_axis("left_A", "Right_D")
