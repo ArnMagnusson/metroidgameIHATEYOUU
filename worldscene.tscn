@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=4 uid="uid://caonxoddh865b"]
 
 [ext_resource type="PackedScene" uid="uid://ct2tlu1m0qowt" path="res://Playercharacterscene.tscn" id="1_06edm"]
-[ext_resource type="Texture2D" uid="uid://bq75yv6r4hvt8" path="res://metroidvania textures/water tiles/acid.png" id="2_45ln5"]
+[ext_resource type="Texture2D" uid="uid://c3lcds53fmghn" path="res://metroidvania textures/water tiles/acid.png" id="2_45ln5"]
 [ext_resource type="Texture2D" uid="uid://6qqj2137oxrm" path="res://grass1.png" id="2_ygjua"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_0bxrr"]

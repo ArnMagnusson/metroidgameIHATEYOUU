@@ -1,0 +1,32 @@
+[gd_scene load_steps=5 format=3 uid="uid://drrxlqy4tro3o"]
+
+[ext_resource type="Script" path="res://healthbar.gd" id="2_lno56"]
+[ext_resource type="Texture2D" uid="uid://bl5slf5gob7kn" path="res://metroidvania textures/hud/healthbar.png" id="3_i5th7"]
+[ext_resource type="Texture2D" uid="uid://3l78y8m1gyu8" path="res://metroidvania textures/hud/healthbar2.png" id="4_3narh"]
+[ext_resource type="Texture2D" uid="uid://drau8o08wmhy6" path="res://metroidvania textures/hud/healthbar3.png" id="5_2bubm"]
+
+[node name="Hud container" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+script = ExtResource("2_lno56")
+
+[node name="full health" type="Sprite2D" parent="CanvasLayer"]
+position = Vector2(229, 122.5)
+scale = Vector2(7.9375, 5.1875)
+texture = ExtResource("3_i5th7")
+
+[node name="2 hearts" type="Sprite2D" parent="CanvasLayer"]
+position = Vector2(229, 122.5)
+scale = Vector2(7.9375, 5.1875)
+texture = ExtResource("4_3narh")
+
+[node name="3 hearts" type="Sprite2D" parent="CanvasLayer"]
+position = Vector2(229, 122.5)
+scale = Vector2(7.9375, 5.1875)
+texture = ExtResource("5_2bubm")
