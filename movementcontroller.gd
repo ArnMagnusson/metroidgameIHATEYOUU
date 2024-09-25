@@ -21,6 +21,7 @@ func _physics_process(delta):
 
 	# Get the input direction and handle the movement/deceleration.
 	var direction = Input.get_axis("left_A", "Right_D")
+	# print(Input.get_axis("left_A", "Right_D"))
 	
 	#Flip sprite, depending on direction
 	# if its above 0 its moving right if below zero moving left
