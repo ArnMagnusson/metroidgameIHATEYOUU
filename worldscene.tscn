@@ -1,8 +1,14 @@
-[gd_scene load_steps=8 format=4 uid="uid://caonxoddh865b"]
+[gd_scene load_steps=13 format=4 uid="uid://caonxoddh865b"]
 
 [ext_resource type="PackedScene" uid="uid://ct2tlu1m0qowt" path="res://Playercharacterscene.tscn" id="1_06edm"]
-[ext_resource type="Texture2D" uid="uid://c3lcds53fmghn" path="res://metroidvania textures/water tiles/acid.png" id="2_45ln5"]
+[ext_resource type="PackedScene" uid="uid://dpw215d4ohh0k" path="res://killzone.tscn" id="1_gk1or"]
+[ext_resource type="Texture2D" uid="uid://btyiuestoc4q7" path="res://metroidvania textures/water tiles/acid.png" id="2_45ln5"]
 [ext_resource type="Texture2D" uid="uid://6qqj2137oxrm" path="res://grass1.png" id="2_ygjua"]
+[ext_resource type="PackedScene" uid="uid://drrxlqy4tro3o" path="res://hud.tscn" id="4_8h6nk"]
+[ext_resource type="Script" path="res://checkpointmanager.gd" id="6_1y0qn"]
+[ext_resource type="PackedScene" uid="uid://dg2jgkiptxn83" path="res://checkpoint.tscn" id="7_d5f63"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_yoqhd"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_0bxrr"]
 resource_name = "Acid"
@@ -25,8 +31,15 @@ texture = ExtResource("2_ygjua")
 physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_ccdqd")
 
-[node name="Node2D" type="Node2D"]
+[node name="Node2D" type="Node2D" groups=["Player"]]
 position = Vector2(210, 318)
+
+[node name="Killzone" parent="." instance=ExtResource("1_gk1or")]
+position = Vector2(298, 40)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Killzone"]
+position = Vector2(-1, 13)
+shape = SubResource("WorldBoundaryShape2D_yoqhd")
 
 [node name="CharacterBody2D" parent="." instance=ExtResource("1_06edm")]
 position = Vector2(289, -89)
@@ -38,5 +51,27 @@ tile_map_data = PackedByteArray("AAAaAP//AAAAAAAAAAAaAP7/AAAAAAAAAAAbAP7/AAAAAAA
 tile_set = SubResource("TileSet_q2loh")
 
 [node name="grass" type="TileMapLayer" parent="Tileholder"]
-tile_map_data = PackedByteArray("AAAAAP//AAAAAAAAAAABAP//AAAAAAAAAAACAP//AAAAAAAAAAADAP//AAAAAAAAAAAEAP//AAAAAAAAAAAFAP//AAAAAAAAAAAGAP//AAAAAAAAAAAHAP//AAAAAAAAAAAIAP//AAAAAAAAAAAJAP//AAAAAAAAAAAKAP//AAAAAAAAAAALAP//AAAAAAAAAAAMAP//AAAAAAAAAAANAP//AAAAAAAAAAATAP//AAAAAAAAAAASAP//AAAAAAAAAAARAP//AAAAAAAAAAAQAP//AAAAAAAAAAAPAP//AAAAAAAAAAAOAP//AAAAAAAAAAAUAP//AAAAAAAAAAAVAP//AAAAAAAAAAAWAP//AAAAAAAAAAAXAP//AAAAAAAAAAAYAP//AAAAAAAAAAAZAP//AAAAAAAAAAAaAP//AAAAAAAAAAAbAP//AAAAAAAAAAAcAP//AAAAAAAAAAAdAP//AAAAAAAAAAAeAP//AAAAAAAAAAAfAP//AAAAAAAAAAAgAP//AAAAAAAAAAAhAP//AAAAAAAAAAAiAP//AAAAAAAAAAAjAP//AAAAAAAAAAAkAP//AAAAAAAAAAAlAP//AAAAAAAAAAAmAP//AAAAAAAAAAAnAP//AAAAAAAAAAAAAP7/AAAAAAAAAAAAAP3/AAAAAAAAAAAAAPz/AAAAAAAAAAAAAPv/AAAAAAAAAAAAAPr/AAAAAAAAAAAnAP7/AAAAAAAAAAAnAP3/AAAAAAAAAAAnAPr/AAAAAAAAAAAnAPv/AAAAAAAAAAAnAPz/AAAAAAAAAAAXAP7/AAAAAAAAAAAXAP3/AAAAAAAAAAAVAPz/AAAAAAAAAAAQAP3/AAAAAAAAAAANAP7/AAAAAAAAAAALAP3/AAAAAAAAAAA=")
+tile_map_data = PackedByteArray("AAAAAP//AAAAAAAAAAABAP//AAAAAAAAAAACAP//AAAAAAAAAAADAP//AAAAAAAAAAAEAP//AAAAAAAAAAAFAP//AAAAAAAAAAAGAP//AAAAAAAAAAAHAP//AAAAAAAAAAAIAP//AAAAAAAAAAAJAP//AAAAAAAAAAAKAP//AAAAAAAAAAALAP//AAAAAAAAAAAMAP//AAAAAAAAAAANAP//AAAAAAAAAAATAP//AAAAAAAAAAASAP//AAAAAAAAAAARAP//AAAAAAAAAAAQAP//AAAAAAAAAAAPAP//AAAAAAAAAAAOAP//AAAAAAAAAAAUAP//AAAAAAAAAAAVAP//AAAAAAAAAAAWAP//AAAAAAAAAAAXAP//AAAAAAAAAAAYAP//AAAAAAAAAAAZAP//AAAAAAAAAAAaAP//AAAAAAAAAAAbAP//AAAAAAAAAAAcAP//AAAAAAAAAAAdAP//AAAAAAAAAAAeAP//AAAAAAAAAAAfAP//AAAAAAAAAAAgAP//AAAAAAAAAAAhAP//AAAAAAAAAAAiAP//AAAAAAAAAAAjAP//AAAAAAAAAAAkAP//AAAAAAAAAAAlAP//AAAAAAAAAAAmAP//AAAAAAAAAAAnAP//AAAAAAAAAAAAAP7/AAAAAAAAAAAAAP3/AAAAAAAAAAAnAP7/AAAAAAAAAAAnAP3/AAAAAAAAAAAnAPr/AAAAAAAAAAAnAPv/AAAAAAAAAAAnAPz/AAAAAAAAAAAXAP7/AAAAAAAAAAAXAP3/AAAAAAAAAAAVAPz/AAAAAAAAAAAQAP3/AAAAAAAAAAANAP7/AAAAAAAAAAALAP3/AAAAAAAAAAA=")
 tile_set = SubResource("TileSet_i474a")
+
+[node name="Hud container" parent="." instance=ExtResource("4_8h6nk")]
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 5.0
+offset_top = -194.0
+offset_right = 5.0
+offset_bottom = -194.0
+grow_horizontal = 1
+grow_vertical = 1
+
+[node name="Light holder" type="Node2D" parent="."]
+
+[node name="DirectionalLight2D" type="DirectionalLight2D" parent="Light holder"]
+position = Vector2(88, -246)
+
+[node name="checkpointmanager" type="Node" parent="."]
+script = ExtResource("6_1y0qn")
+
+[node name="checkpoint" parent="checkpointmanager" groups=["Player"] instance=ExtResource("7_d5f63")]
+position = Vector2(283, 277)
