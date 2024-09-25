@@ -1,0 +1,90 @@
+[gd_scene load_steps=10 format=3 uid="uid://t2cq3mumkcis"]
+
+[ext_resource type="Texture2D" uid="uid://bbtn1ejk2efgr" path="res://metroidvania textures/enemies/grass creature.png" id="1_1aock"]
+[ext_resource type="Script" path="res://enemy.gd" id="1_8krce"]
+[ext_resource type="Texture2D" uid="uid://dpjfoi42g3h37" path="res://metroidvania textures/enemies/grass creature damaged.png" id="2_20yey"]
+[ext_resource type="Texture2D" uid="uid://bvfo5rt3l06hf" path="res://metroidvania textures/enemies/grass creature die.png" id="3_4ael4"]
+[ext_resource type="Texture2D" uid="uid://q1er0otc07bf" path="res://metroidvania textures/enemies/grass creature walk.png" id="3_i05lf"]
+[ext_resource type="Texture2D" uid="uid://cw7scaupvioet" path="res://metroidvania textures/enemies/grass creature walk2.png" id="4_owf4y"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_svtjk"]
+size = Vector2(12, 12)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_agr8x"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_1aock")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_4ael4")
+}],
+"loop": true,
+"name": &"death",
+"speed": 4.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_1aock")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_20yey")
+}],
+"loop": true,
+"name": &"hurt",
+"speed": 3.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_1aock")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_1aock")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_i05lf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("1_1aock")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_owf4y")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bd8sk"]
+size = Vector2(12, 12)
+
+[node name="enemy" type="CharacterBody2D"]
+script = ExtResource("1_8krce")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -6)
+shape = SubResource("RectangleShape2D_svtjk")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -8)
+sprite_frames = SubResource("SpriteFrames_agr8x")
+animation = &"hurt"
+frame_progress = 0.20801
+
+[node name="DirectionTimer" type="Timer" parent="." groups=["Hurt"]]
+autostart = true
+
+[node name="Hitbox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+position = Vector2(0, -6)
+shape = SubResource("RectangleShape2D_bd8sk")
+
+[connection signal="timeout" from="DirectionTimer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="DirectionTimer" to="." method="_on_direction_timer_timeout"]
+[connection signal="area_entered" from="Hitbox" to="." method="_on_hitbox_area_entered"]
