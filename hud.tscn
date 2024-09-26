@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://drrxlqy4tro3o"]
+[gd_scene load_steps=5 format=3 uid="uid://bmdsdsgcb4h3"]
 
 [ext_resource type="Script" path="res://healthbar.gd" id="2_lno56"]
 [ext_resource type="Texture2D" uid="uid://cnaw4evstbqr" path="res://metroidvania textures/hud/healthbar.png" id="3_i5th7"]
