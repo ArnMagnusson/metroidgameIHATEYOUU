@@ -1,13 +1,26 @@
-[gd_scene load_steps=3 format=3 uid="uid://dg2jgkiptxn83"]
+[gd_scene load_steps=3 format=3 uid="uid://bm5r43apt0vrh"]
 
-[ext_resource type="Script" path="res://checkpoint.gd" id="1_2fsbd"]
+[sub_resource type="GDScript" id="GDScript_pmrma"]
+script/source = "extends Node
+
+var last_location = Vector2()  # Define the variable to store the player's position
+var player
+
+func _ready():
+	# Attempt to get the player node
+	player = $\"../../CharacterBody2D\"
+	if player:  # Check if player node was found
+		last_location = player.global_position  # Store the player's starting position
+	else:
+		print(\"Error: Player node not found!\")
+"
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qv0ap"]
 size = Vector2(41, 305)
 
 [node name="checkpoint" type="Area2D"]
 position = Vector2(122, 180)
-script = ExtResource("1_2fsbd")
+script = SubResource("GDScript_pmrma")
 metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=["Player"]]

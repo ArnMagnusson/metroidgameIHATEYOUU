@@ -5,8 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://btyiuestoc4q7" path="res://metroidvania textures/water tiles/acid.png" id="2_45ln5"]
 [ext_resource type="Texture2D" uid="uid://6qqj2137oxrm" path="res://grass1.png" id="2_ygjua"]
 [ext_resource type="PackedScene" uid="uid://drrxlqy4tro3o" path="res://hud.tscn" id="4_8h6nk"]
-[ext_resource type="Script" path="res://checkpointmanager.gd" id="6_1y0qn"]
-[ext_resource type="PackedScene" uid="uid://dg2jgkiptxn83" path="res://checkpoint.tscn" id="7_d5f63"]
+[ext_resource type="PackedScene" uid="uid://t2cq3mumkcis" path="res://enemy.tscn" id="8_d7heu"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_yoqhd"]
 
@@ -30,6 +29,9 @@ texture = ExtResource("2_ygjua")
 [sub_resource type="TileSet" id="TileSet_i474a"]
 physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_ccdqd")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kjf3v"]
+size = Vector2(63, 20)
 
 [node name="Node2D" type="Node2D" groups=["Player"]]
 position = Vector2(210, 318)
@@ -70,8 +72,12 @@ grow_vertical = 1
 [node name="DirectionalLight2D" type="DirectionalLight2D" parent="Light holder"]
 position = Vector2(88, -246)
 
-[node name="checkpointmanager" type="Node" parent="."]
-script = ExtResource("6_1y0qn")
+[node name="enemy" parent="." instance=ExtResource("8_d7heu")]
+position = Vector2(118, -50)
 
-[node name="checkpoint" parent="checkpointmanager" groups=["Player"] instance=ExtResource("7_d5f63")]
-position = Vector2(283, 277)
+[node name="Acid" parent="." instance=ExtResource("1_gk1or")]
+position = Vector2(441, -24)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Acid"]
+position = Vector2(6.5, 2)
+shape = SubResource("RectangleShape2D_kjf3v")
