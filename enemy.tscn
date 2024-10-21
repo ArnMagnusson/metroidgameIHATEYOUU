@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://t2cq3mumkcis"]
+[gd_scene load_steps=12 format=3 uid="uid://t2cq3mumkcis"]
 
 [ext_resource type="Texture2D" uid="uid://cg7k268q6g4xn" path="res://metroidvania textures/enemies/grass creature.png" id="1_1aock"]
 [ext_resource type="Script" path="res://enemy.gd" id="1_8krce"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://bvfo5rt3l06hf" path="res://metroidvania textures/enemies/grass creature die.png" id="3_4ael4"]
 [ext_resource type="Texture2D" uid="uid://c6mwfh4emst10" path="res://metroidvania textures/enemies/grass creature walk.png" id="3_i05lf"]
 [ext_resource type="Texture2D" uid="uid://bjknh6wqpehuo" path="res://metroidvania textures/enemies/grass creature walk2.png" id="4_owf4y"]
+[ext_resource type="PackedScene" uid="uid://djgluu5o1x0t7" path="res://killzone.tscn" id="7_v4uu8"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_svtjk"]
 size = Vector2(12, 12)
@@ -63,6 +64,9 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bd8sk"]
 size = Vector2(12, 12)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ikaum"]
+size = Vector2(14, 13)
+
 [node name="enemy" type="CharacterBody2D"]
 script = ExtResource("1_8krce")
 
@@ -74,7 +78,7 @@ shape = SubResource("RectangleShape2D_svtjk")
 position = Vector2(0, -8)
 sprite_frames = SubResource("SpriteFrames_agr8x")
 animation = &"hurt"
-frame_progress = 0.831371
+frame_progress = 0.115596
 
 [node name="DirectionTimer" type="Timer" parent="." groups=["Hurt"]]
 autostart = true
@@ -85,6 +89,12 @@ autostart = true
 position = Vector2(0, -6)
 shape = SubResource("RectangleShape2D_bd8sk")
 
-[connection signal="timeout" from="DirectionTimer" to="." method="_on_timer_timeout"]
+[node name="Killzone" parent="." instance=ExtResource("7_v4uu8")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Killzone" groups=["Player"]]
+position = Vector2(0, -6.5)
+shape = SubResource("RectangleShape2D_ikaum")
+
 [connection signal="timeout" from="DirectionTimer" to="." method="_on_direction_timer_timeout"]
+[connection signal="timeout" from="DirectionTimer" to="." method="_on_timer_timeout"]
 [connection signal="area_entered" from="Hitbox" to="." method="_on_hitbox_area_entered"]

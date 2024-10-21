@@ -4,9 +4,9 @@
 [ext_resource type="Texture2D" uid="uid://btyiuestoc4q7" path="res://metroidvania textures/water tiles/acid.png" id="2_45ln5"]
 [ext_resource type="Texture2D" uid="uid://6qqj2137oxrm" path="res://grass1.png" id="2_ygjua"]
 [ext_resource type="PackedScene" uid="uid://t2cq3mumkcis" path="res://enemy.tscn" id="4_b6lef"]
-[ext_resource type="PackedScene" path="res://hud.tscn" id="5_tvomw"]
+[ext_resource type="PackedScene" uid="uid://bmdsdsgcb4h3" path="res://hud.tscn" id="5_tvomw"]
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_0bxrr"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_2kur1"]
 resource_name = "Acid"
 texture = ExtResource("2_45ln5")
 0:0/animation_columns = 2
@@ -16,16 +16,16 @@ texture = ExtResource("2_45ln5")
 
 [sub_resource type="TileSet" id="TileSet_q2loh"]
 physics_layer_0/collision_layer = 1
-sources/0 = SubResource("TileSetAtlasSource_0bxrr")
+sources/0 = SubResource("TileSetAtlasSource_2kur1")
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ccdqd"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_agko7"]
 texture = ExtResource("2_ygjua")
 0:0/0 = 0
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 
 [sub_resource type="TileSet" id="TileSet_i474a"]
 physics_layer_0/collision_layer = 1
-sources/0 = SubResource("TileSetAtlasSource_ccdqd")
+sources/0 = SubResource("TileSetAtlasSource_agko7")
 
 [node name="Node2D" type="Node2D"]
 position = Vector2(210, 318)
