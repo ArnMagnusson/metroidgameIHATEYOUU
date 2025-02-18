@@ -4,7 +4,7 @@ const SPEED = 100.0
 const JUMP_VELOCITY = -300.0
 
 func _ready():
-	Global.playerBody = self
+	Global.playerBody = self 
 
 func _physics_process(delta):
 	# Add the gravity. is on floor detects if its a flat surface on the button.
