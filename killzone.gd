@@ -12,4 +12,4 @@ func _on_body_entered(body):
 		killplayer()
 
 func killplayer():
-	pass
+	get_tree().reload_current_scene()

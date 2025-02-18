@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://dpw215d4ohh0k" path="res://killzone.tscn" id="1_gk1or"]
 [ext_resource type="Texture2D" uid="uid://btyiuestoc4q7" path="res://metroidvania textures/water tiles/acid.png" id="2_45ln5"]
 [ext_resource type="Texture2D" uid="uid://6qqj2137oxrm" path="res://grass1.png" id="2_ygjua"]
-[ext_resource type="PackedScene" uid="uid://drrxlqy4tro3o" path="res://hud.tscn" id="4_8h6nk"]
+[ext_resource type="PackedScene" uid="uid://bmdsdsgcb4h3" path="res://hud.tscn" id="4_8h6nk"]
 [ext_resource type="PackedScene" uid="uid://t2cq3mumkcis" path="res://enemy.tscn" id="8_d7heu"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_yoqhd"]
@@ -39,7 +39,7 @@ position = Vector2(210, 318)
 [node name="Killzone" parent="." instance=ExtResource("1_gk1or")]
 position = Vector2(298, 40)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Killzone"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Killzone" groups=["Hurt", "Player"]]
 position = Vector2(-1, 13)
 shape = SubResource("WorldBoundaryShape2D_yoqhd")
 
