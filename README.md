@@ -1,2 +1,2 @@
 <p>play our game</p>
-<a href="index.html">game</a>
+<a href="build/web/index.html">jungle jumper</a>
