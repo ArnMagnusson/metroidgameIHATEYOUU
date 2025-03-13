@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://ct2tlu1m0qowt"]
 
-[ext_resource type="Script" path="res://movementcontroller.gd" id="1_niulq"]
+[ext_resource type="Script" uid="uid://bqbt0rg5ngthb" path="res://movementcontroller.gd" id="1_niulq"]
 [ext_resource type="Texture2D" uid="uid://ce5q6yuea2ej" path="res://Animation 0.png" id="2_6hey6"]
 [ext_resource type="Texture2D" uid="uid://dr4rtduc2fio8" path="res://animation 1.png" id="3_hgk22"]
 [ext_resource type="Texture2D" uid="uid://0ahbont1cy40" path="res://animation 2.png" id="4_3xk75"]

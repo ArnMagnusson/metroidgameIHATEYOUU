@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://bmdsdsgcb4h3"]
 
-[ext_resource type="Script" path="res://healthbar.gd" id="2_lno56"]
+[ext_resource type="Script" uid="uid://dag12w8qoylhq" path="res://healthbar.gd" id="2_lno56"]
 [ext_resource type="Texture2D" uid="uid://cnaw4evstbqr" path="res://metroidvania textures/hud/healthbar.png" id="3_i5th7"]
 [ext_resource type="Texture2D" uid="uid://01xlqjeocrh4" path="res://metroidvania textures/hud/healthbar2.png" id="4_3narh"]
 [ext_resource type="Texture2D" uid="uid://b4eqlsuaf8scd" path="res://metroidvania textures/hud/healthbar3.png" id="5_2bubm"]
